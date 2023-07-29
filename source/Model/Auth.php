@@ -43,12 +43,12 @@ class Auth extends Model
         $user = (new User())->findByEmail($email);
 
         if(!$user){
-            $this->message->error("O Email informado não está cadastrado em nossa base");
+            $this->message->error("Não encontramos registro com esses dados em nossa base.");
             return null;
         }
 
         if(!passwd_verify($password, $user->password)){
-            $this->message->error('A senha informada não confere');
+            $this->message->error('Não encontramos registro com esses dados em nossa base.');
             return null;
         }
 

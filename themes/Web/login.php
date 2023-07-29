@@ -1,7 +1,7 @@
 <?php $v->layout("__theme"); ?>
 <div class="login">
     <article class="login_box radius">
-        <h1 class="hl icon-coffee">Login</h1>
+        <h1 class="hl icon-coffee"> Faça o login em nossa plataforma.</h1>
         <div class="ajax_response"></div>
 
         <form id="form_login" name="login" action="<?= url("/login"); ?>" method="post">
@@ -14,17 +14,21 @@
                 <span class="field icon-unlock-alt">Senha:</span>
                 <input name="password" type="password" placeholder="Informe sua senha:" required/>
             </label>
-
-            <button type="submit" class="radius btn-entrar icon-sign-in">Entrar</button>
+            <div style="display:flex;">
+                <button type="submit" class="radius btn-entrar icon-sign-in">Entrar</button>
+            </div>
         </form>
 
         <footer>
-            <p>Desenvolvido por <b>https://pablomesquita.com</b></p>
+            <div>
+            <h4>Caso não seja cadastrado clique <a>aqui</a></h4>
+            </div>
+            <div>
+            <p>Desenvolvido por <b>Pablo O. Mesquita</b></p>
+            </div>
+            <div>
             <p>&copy; <?= date("Y"); ?> - todos os direitos reservados</p>
-            <a target="_blank"
-               class="icon-whatsapp transition"
-               href="https://api.whatsapp.com/send?phone=554833715879&text=Olá, preciso de ajuda com o login."
-            >WhatsApp: (21) 965556934</a>
+            </div>
         </footer>
     </article>
 </div>

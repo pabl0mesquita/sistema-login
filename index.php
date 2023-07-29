@@ -12,10 +12,6 @@ $route->namespace('Source\App');
 $route->get('/', 'Web:index');
 $route->post('/login','Web:login');
 
-
-
-
-
 ####################
 ### ERROR ROUTES ###
 ####################
@@ -25,7 +21,6 @@ $route->get('/{errcode}', 'Web:error');
 /**
  * ROUTE
  */
-
 $route->dispatch();
 
 /**

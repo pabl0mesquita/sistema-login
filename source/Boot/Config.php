@@ -10,8 +10,8 @@ define('CONF_DB_PASS','');
 ###########
 ### URL ###
 ###########
-define('CONF_URL_BASE','http://dominio.com.br');
-define('CONF_URL_TEST','http://localhost/sistemalogin');
+define('CONF_URL_BASE','http://localhost:9000/sistema-login/');
+define('CONF_URL_TEST','http://localhost:9000/sistema-login');
 
 #############
 ### VIEW ####
