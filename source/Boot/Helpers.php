@@ -43,14 +43,19 @@ function redirect(string $url): void
 ################
 ### PASSWORD ###
 ################
+
 /**
  * @param string $password
  * @return string
  */
 function passwd(string $password): string
 {
+    if(!empty(password_get_info($password)['algo'])){
+        return $password;
+    }
     return password_hash($password, CONF_PASSWD_ALGO, CONF_PASSWD_OPTION);
 }
+
 
 /**
  * @param string $password

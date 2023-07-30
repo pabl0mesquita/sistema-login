@@ -4,6 +4,7 @@ namespace Source\Model;
 use Source\Core\Model;
 use Source\Core\Session;
 use Source\Model\User;
+use Source\Core\View;
 
 /**
  * [ Class Auth ]
@@ -52,6 +53,11 @@ class Auth extends Model
             return null;
         }
 
+        if($user->status != "confirmed"){
+            $this->message->info("Você precisa confirmar o cadatro no email que lhe foi enviado.");
+            return null;
+        }
+
         if(passwd_rehash($user->password)){
             $user->password = $password;
             $user->save();
@@ -78,6 +84,27 @@ class Auth extends Model
 
         //LOGIN
         (new Session())->set("authUser", $user->id);
+        return true;
+
+    }
+
+    public function register(User $user): bool
+    {
+        //tenta registrar usuário, caso não consiga, retorna erro do user
+        if(!$user->save()){
+            $this->message = $user->message;
+            return false;
+        }
+
+        /** carrega pasta do email */
+        $view = new View(__DIR__."/../../shared/views/email");
+        /** retorna html passando parâmetros para a view */
+        $message = $view->render("confirm", [
+            "first_name" => $user->first_name,
+            "confirm_link" => url("/obrigado/".base64_encode($user->email))
+        ]);
+
+        echo $message;
         return true;
 
     }

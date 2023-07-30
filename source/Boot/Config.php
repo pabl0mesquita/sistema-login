@@ -22,5 +22,5 @@ define("CONF_VIEW_EXT",'php');
 ################
 ### PASSWORD ###
 ################
-define('CONF_PASSWD_ALGO',PASSWORD_DEFAULT);
-define('CONF_PASSWD_OPTION', PASSWORD_DEFAULT);
+define("CONF_PASSWD_ALGO", PASSWORD_DEFAULT);
+define("CONF_PASSWD_OPTION", ["cost" => 10]);

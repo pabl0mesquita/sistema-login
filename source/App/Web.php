@@ -49,6 +49,40 @@ class Web extends  Controller
         echo json_encode($json);
     }
 
+    public function cadastro()
+    {
+        echo $this->view->render("cadastro",[]);
+    }
+
+    /**
+     * registro
+     */
+    public function registro(array $data)
+    {
+        $user = new User();
+        $user->first_name = $data["name"];
+        $user->last_name = $data["lastname"];
+        $user->email = $data["email"];
+        $user->status = 'registered';
+        $user->first_name = $data["name"];
+        $user->password = $data["password"];
+        $user->repassword = $data["repassword"];
+
+        $auth = new Auth();
+
+        if($auth->register($user)){
+            $json['redirect'] = url('/confirma');
+            echo json_encode($json);
+            return;
+        }else{
+            $json['message'] = $auth->message()->render();
+            echo json_encode($json);
+            return;
+        }
+        echo $this->view->render("cadastro",[]);
+        
+    }
+
     /**
      * error
      * @param array $data

@@ -11,6 +11,9 @@ $route = new Router(url(), ":");
 $route->namespace('Source\App');
 $route->get('/', 'Web:index');
 $route->post('/login','Web:login');
+$route->get("/cadastro", 'Web:cadastro');
+$route->get("/confirmacao", 'Web:confirmed');
+$route->post("/registro", "Web:registro");
 
 ####################
 ### ERROR ROUTES ###

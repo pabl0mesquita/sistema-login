@@ -83,6 +83,14 @@ abstract class Model
 
     /**
      * @param $name
+     */
+    public function __unset($name)
+    {
+         unset($this->data->$name);
+    }
+
+    /**
+     * @param $name
      * @return null
      */
     public function __get($name)
